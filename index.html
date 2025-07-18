@@ -3,51 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rohin Senthil - Portfolio</title>
+  <title>Rohin Senthil – Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #0d6efd;
+      margin-top: 30px;
+    }
+    .section-title {
+      margin-top: 40px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
+    .content-container {
+      max-width: 800px;
+      margin: auto;
+    }
+    .btn-primary {
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    #comic {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+    }
+  </style>
 </head>
-<body class="bg-light">
+<body>
 
-  <div class="container text-center mt-5">
-    <img src="pfp.jpg" class="rounded-circle mb-3" width="150" height="150" alt="Rohin's Headshot">
-    <h1>Rohin Senthil</h1>
+  <div class="container content-container text-center">
+    <img src="pfp.jpg" alt="Rohin's Headshot" class="profile-img">
+    <h1 class="mt-3">Rohin Senthil</h1>
     <p>
-      Email: <a href="mailto:senthirn@mail.uc.edu">senthirn@mail.uc.edu</a> |
+      <a href="mailto:senthirn@mail.uc.edu">senthirn@mail.uc.edu</a> |
       <a href="https://github.com/senthirn" target="_blank">GitHub</a> |
       <a href="https://www.linkedin.com/in/rohin-senthil/" target="_blank">LinkedIn</a>
     </p>
     <a class="btn btn-primary" href="Senthil_Rohin_Resume_2025.pdf" target="_blank">Download Resume (PDF)</a>
-  </div>
 
-  <div class="container mt-5">
-    <h4>About Me</h4>
-    <p>Hi! Welcome to my page. My name is Rohin Senthil, I'm currently in my final year at UC and I'm majoring in computer science. A little bit about me is that I live in Mason, Ohio and I have 2 dogs named Simba and Junior!</p>
+    <div class="text-start mt-4">
+      <h4 class="section-title">About Me</h4>
+      <p>
+        Hi! Welcome to my page. My name is Rohin Senthil, I'm currently in my final year at UC and I'm majoring in computer science.
+        A little bit about me is that I live in Mason, Ohio and I have 2 dogs named Simba and Junior!
+      </p>
 
-    <h4>Skills</h4>
-    <ul>
-      <li>Python, Java, C++</li>
-      <li>Spring Boot, Quality Assurance</li>
-      <li>Leadership, Communication</li>
-    </ul>
+      <h4 class="section-title">Skills</h4>
+      <ul>
+        <li>Python, Java, C++</li>
+        <li>Spring Boot, Quality Assurance</li>
+        <li>Leadership, Communication</li>
+      </ul>
 
-    <h4>Projects</h4>
-    <ul>
-      <li><a href="waph.html" target="_blank">Web App Programming & Hacking Course Projects</a></li>
-    </ul>
+      <h4 class="section-title">Projects</h4>
+      <ul>
+        <li><a href="waph.html" target="_blank">Web App Programming & Hacking Course Projects</a></li>
+      </ul>
 
-    <h4>Random Joke (API)</h4>
-    <p id="joke">Loading...</p>
+      <h4 class="section-title">Random Joke (API)</h4>
+      <p id="joke">Loading joke...</p>
 
-    <h4>Latest XKCD Comic</h4>
-    <p id="comic-title">Loading...</p>
-    <img id="comic" class="img-fluid mb-3" alt="XKCD Comic" />
+      <h4 class="section-title">Latest XKCD Comic</h4>
+      <p id="comic-title">Loading comic title...</p>
+      <img id="comic" alt="XKCD Comic" />
 
-    <h4>Visitor Tracker</h4>
-    <p>
-      <a href="https://info.flagcounter.com/AbCd">
-        <img src="https://s11.flagcounter.com/count2/AbCd/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter">
-      </a>
-    </p>
+      <h4 class="section-title">Visitor Tracker</h4>
+      <div class="text-center">
+        <a href="https://info.flagcounter.com/AbCd">
+          <img src="https://s11.flagcounter.com/count2/AbCd/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter">
+        </a>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -58,16 +97,14 @@
         document.getElementById("joke").textContent = data.joke;
       });
 
-    // XKCD Comic API with CORS fix
+    // XKCD Comic via proxy
     fetch('https://api.allorigins.win/get?url=https://xkcd.com/info.0.json')
       .then(response => response.json())
       .then(data => {
         const xkcd = JSON.parse(data.contents);
-        const img = document.getElementById('comic');
-        const title = document.getElementById('comic-title');
-        img.src = xkcd.img;
-        img.alt = xkcd.alt;
-        title.textContent = xkcd.title;
+        document.getElementById("comic-title").textContent = xkcd.title;
+        document.getElementById("comic").src = xkcd.img;
+        document.getElementById("comic").alt = xkcd.alt;
       });
   </script>
 
