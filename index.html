@@ -2,66 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Rohin Senthil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rohin Senthil - Portfolio</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    body {
-      padding-top: 3rem;
-      font-family: Arial, sans-serif;
-    }
-    .headshot {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-  </style>
 </head>
-<body>
-  <div class="container text-center">
-    <img src="pfp.jpg" alt="Rohin Senthil Headshot" class="headshot mb-3">
+<body class="bg-light">
+
+  <div class="container text-center mt-5">
+    <img src="pfp.jpg" class="rounded-circle mb-3" width="150" height="150" alt="Rohin's Headshot">
     <h1>Rohin Senthil</h1>
     <p>
       Email: <a href="mailto:senthirn@mail.uc.edu">senthirn@mail.uc.edu</a> |
       <a href="https://github.com/senthirn" target="_blank">GitHub</a> |
       <a href="https://www.linkedin.com/in/rohin-senthil/" target="_blank">LinkedIn</a>
     </p>
-    <a class="btn btn-primary mb-4" href="Senthil_Rohin_Resume_2025.pdf" download>Download Resume (PDF)</a>
+    <a class="btn btn-primary" href="Senthil_Rohin_Resume_2025.pdf" target="_blank">Download Resume (PDF)</a>
+  </div>
 
-    <hr/>
+  <div class="container mt-5">
+    <h4>About Me</h4>
+    <p>Hi! Welcome to my page. My name is Rohin Senthil, I'm currently in my final year at UC and I'm majoring in computer science. A little bit about me is that I live in Mason, Ohio and I have 2 dogs named Simba and Junior!</p>
 
-    <h3>About Me</h3>
-    <p>
-      Hi! Welcome to my page. My name is Rohin Senthil, I'm currently in my final year at UC and I'm majoring in computer science. A little bit about me is that I live in Mason, Ohio and I have 2 dogs named Simba and Junior!
-    </p>
-
-    <h3>Skills</h3>
-    <ul class="list-unstyled">
+    <h4>Skills</h4>
+    <ul>
       <li>Python, Java, C++</li>
       <li>Spring Boot, Quality Assurance</li>
       <li>Leadership, Communication</li>
     </ul>
 
-    <h3>Projects</h3>
+    <h4>Projects</h4>
+    <ul>
+      <li><a href="waph.html" target="_blank">Web App Programming & Hacking Course Projects</a></li>
+    </ul>
+
+    <h4>Random Joke (API)</h4>
+    <p id="joke">Loading...</p>
+
+    <h4>Latest XKCD Comic</h4>
+    <p id="comic-title">Loading...</p>
+    <img id="comic" class="img-fluid mb-3" alt="XKCD Comic" />
+
+    <h4>Visitor Tracker</h4>
     <p>
-      <a href="waph.html">Web App Programming & Hacking Course Projects</a>
+      <a href="https://info.flagcounter.com/AbCd">
+        <img src="https://s11.flagcounter.com/count2/AbCd/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter">
+      </a>
     </p>
-
-    <h3>Random Joke (API)</h3>
-    <p id="joke">Loading a programming joke...</p>
-
-    <h3>Latest XKCD Comic</h3>
-    <div id="xkcd-container">
-      <img id="comic" alt="Loading XKCD Comic..." class="img-fluid" style="max-width:100%; height:auto;">
-      <p id="comic-title" class="text-muted mt-2"></p>
-    </div>
-
-    <h3 class="mt-4">Visitor Tracker</h3>
-    <!-- Replace this snippet below with your own from https://flagcounter.com -->
-    <a href="https://info.flagcounter.com/xyz">
-      <img src="https://s11.flagcounter.com/count2/xyz/bg_FFFFFF/txt_000000/border_CCCCCC/columns_3/maxflags_12/viewers_3/labels_1/pageviews_1/flags_0/percent_0/" alt="Flag Counter">
-    </a>
   </div>
 
   <script>
@@ -72,16 +58,18 @@
         document.getElementById("joke").textContent = data.joke;
       });
 
-    // XKCD Comic
-    fetch('https://xkcd.com/info.0.json')
+    // XKCD Comic API with CORS fix
+    fetch('https://api.allorigins.win/get?url=https://xkcd.com/info.0.json')
       .then(response => response.json())
       .then(data => {
+        const xkcd = JSON.parse(data.contents);
         const img = document.getElementById('comic');
         const title = document.getElementById('comic-title');
-        img.src = data.img;
-        img.alt = data.alt;
-        title.textContent = data.title;
+        img.src = xkcd.img;
+        img.alt = xkcd.alt;
+        title.textContent = xkcd.title;
       });
   </script>
+
 </body>
 </html>
