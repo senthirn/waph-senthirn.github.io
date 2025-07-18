@@ -25,20 +25,6 @@
       border-radius: 50%;
       border: 4px solid #00bcd4;
     }
-    .toc {
-      position: fixed;
-      top: 30%;
-      left: 20px;
-    }
-    .toc a {
-      display: block;
-      color: #00bcd4;
-      margin-bottom: 0.5rem;
-      text-decoration: none;
-    }
-    .toc a:hover {
-      text-decoration: underline;
-    }
     a.btn-custom {
       background-color: #00bcd4;
       color: #000;
@@ -47,15 +33,6 @@
   </style>
 </head>
 <body data-bs-theme="dark">
-
-  <div class="toc">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#joke">Random Joke</a>
-    <a href="#xkcd">XKCD Comic</a>
-    <a href="#tracker">Visitors</a>
-  </div>
 
   <div class="container text-center pt-5" data-aos="fade-down">
     <img src="pfp.jpg" alt="Profile Photo" class="profile-img mb-3"/>
@@ -66,6 +43,7 @@
       <a href="https://www.linkedin.com/in/rohin-senthil/" target="_blank">LinkedIn</a>
     </p>
     <a class="btn btn-custom mb-4" href="Senthil_Rohin_Resume_2025.pdf" download>Download Resume (PDF)</a>
+    <p id="cookieMessage" class="mt-2 text-info"></p>
   </div>
 
   <section class="section" id="about" data-aos="fade-up">
@@ -120,6 +98,7 @@
     <img src="https://s11.flagcounter.com/count2/7cBG/bg_0D1117/txt_FFFFFF/border_4B5359/columns_4/maxflags_8/viewers_0/labels_1/pageviews_1/flags_1/percent_0/" alt="Flag Counter" border="0">
   </section>
 
+  <!-- Bootstrap & AOS JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
@@ -140,6 +119,14 @@
         document.getElementById("comicImg").src = data.img;
         document.getElementById("comicImg").alt = data.alt;
       });
+
+    // Session Cookie Logic
+    if (!sessionStorage.getItem("visited")) {
+      document.getElementById("cookieMessage").innerText = "👋 Welcome! First visit this session.";
+      sessionStorage.setItem("visited", "yes");
+    } else {
+      document.getElementById("cookieMessage").innerText = "🔁 Welcome back (this session)!";
+    }
   </script>
 </body>
 </html>
