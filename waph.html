@@ -3,70 +3,63 @@
 <head>
 <meta charset="utf-8">
 <title>WAPH-Rohin Senthil</title>
-<link rel="stylesheet"
-href=https://waph-phung.github.io/style1.css>
+<link rel="stylesheet" href="https://waph-phung.github.io/style1.css">
 <style>
-	.button{
-	background-color:#4CAF50;
-	border:none;
-	color:white;
-	padding:5px;
-	text-align:center;
-	text-decoration:none;
-	display:inline-block;
-	font-size:12px;
-	margin:4px 2px;
-	cursor:pointer;
+	.button {
+		background-color: #4CAF50;
+		border: none;
+		color: white;
+		padding: 5px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 12px;
+		margin: 4px 2px;
+		cursor: pointer;
 	}
-	.round{border-radius:8px;}
-	#response{background-color:#ff9800;}
+	.round {
+		border-radius: 8px;
+	}
+	#response {
+		background-color: #ff9800;
+	}
 </style>
 </head>
 <body>
 <div class="container wrapper">
-<div id="top">
-	<h1>Web Application Programming and Hacking</h1>
-	<h2>Front-end Web Development Lab</h2>
-	<h3>Instructor: Dr. Phu Phung</h3>
-</div>
-<div class="wrapper">
-<div id="menubar">
-	<h3>Student: Rohin Senthil</h3>
-	<img src="pfp.jpg" alt="My headshot" width="50">
-	<div id="digit-clock"></div>
-	<canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
-	<script src="https://waph-phung.github.io/clock.js"></script>
-</div>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script>
-function displayTime(){
-	document.getElementById('digit-clock').innerHTML = "Current time: " + new Date()
-}
-setInterval(displayTime, 500);
-var canvas = document.getElementById("analog-clock");
-var ctx = canvas.getContext("2d");
-var radius = canvas.height/2;
-ctx.translate(radius, radius);
-radius = radius * 0.90
-setInterval(drawClock, 1000);
-function drawClock() {
-	drawFace(ctx, radius);
-	drawNumbers(ctx, radius);
-	drawTime(ctx, radius);
-}
-</script>
-<div id="main">
-	<p>A simple HTML page </p>
-	Using the <a href="https://www.w3schools.com/html"> W3Schools template</a>
-<div id="email" onclick="showhideEmail()">Show my email</div>
-<script src="email.js"></script>
-<hr>
-<h3>Course Projects</h3>
-<ul>
-  <li><strong>Lab 1 - Foundations of the Web:</strong> Understanding how to use the Wireshark tool and the HTTP protocol. We then built a simple CGI Web App and created a PHP application that takes in user input.</li>
-  <li><strong>Lab 2 - Front-end Web Development:</strong> Learning how to create an HTML page with embedded JavaScript code, integrating external APIs, and dynamically updating the page content.</li>
-</ul>
-</div>
+  <div id="top">
+    <h1>Web Application Programming and Hacking</h1>
+    <h2>Front-end Web Development Lab</h2>
+    <h3>Instructor: Dr. Phu Phung</h3>
+  </div>
+  <div class="wrapper">
+    <div id="menubar">
+      <h3>Student: Rohin Senthil</h3>
+      <img src="pfp.jpg" alt="My headshot" width="50">
+      <div id="digit-clock"></div>
+      <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
+      <script src="https://waph-phung.github.io/clock.js"></script>
+    </div>
+    <script>
+      function showhideEmail() {
+        const e = document.getElementById("email");
+        if (e.innerHTML.includes("Show")) {
+          e.innerHTML = "senthirn@mail.uc.edu";
+        } else {
+          e.innerHTML = "Show my email";
+        }
+      }
+    </script>
+    <div id="main">
+      <p>A simple HTML page</p>
+      Using the <a href="https://www.w3schools.com/html">W3Schools template</a>
+      <div id="email" onclick="showhideEmail()">Show my email</div>
+      <hr>
+      <h3>Course Projects</h3>
+      <p><strong>Lab 1:</strong> Foundations of the web. Understanding how to use Wireshark tool and HTTP protocol. We then built a simple CGI Web App and created a PHP application that takes in user input.</p>
+      <p><strong>Lab 2:</strong> Front-end Web Development. Understanding how to create an HTML page with embedded JavaScript code using external APIs and how to make the page dynamic.</p>
+    </div>
+  </div>
 </div>
 </body>
 </html>
