@@ -39,50 +39,6 @@ href=https://waph-phung.github.io/style1.css>
 </div>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-function encodeInput(input){
-   const encoded = document.createElement('div');
-   encoded.innerText = input;
-   return encoded.innerHtml;
-}
-
-async function guessAge(name){
-	const response = await fetch("https://api.agify.io/?name="+name);
-	const result = await response.json();
-	$("#response" ).text("Hi " + name + ", your age should be " + result.age);
-}
-
-$.get("https://v2.jokeapi.dev/joke/Programming?type=single",
-function(result){
-	$("#response" ).text( "A programming joke of the day: " + result.joke);
-})
-
-function jQueryAjax() {
-	var input = $("#data").val().trim();
-	if (input.length == 0) {
-	    alert("Input cannot be empty");
-	    return;
-	}
-	$.get("echo.php?data="+input,
-		function(result) {
-			$("#response").html("Response from server:" + encodeInput(result));
-		}
-	);
-	$("#data").val("");
-}
-
-function jQueryAjaxPost() {
-	var input = $("#data").val().trim();
-	if (input.length == 0) {
-	    alert("Input cannot be empty");
-	    return;
-	}
-	$.post("echo.php"+{data: input},
-		function(result) {
-			$("#response").html("Response from server:" + encodeInput(result));
-		}
-	);
-	$("#data").val("");
-}
 function displayTime(){
 	document.getElementById('digit-clock').innerHTML = "Current time: " + new Date()
 }
@@ -93,31 +49,10 @@ var radius = canvas.height/2;
 ctx.translate(radius, radius);
 radius = radius * 0.90
 setInterval(drawClock, 1000);
-
 function drawClock() {
 	drawFace(ctx, radius);
 	drawNumbers(ctx, radius);
 	drawTime(ctx, radius);
-}
-
-function getEcho() {
-	var input = document.getElementById("data").value.trim();
-	if (input.length == 0) {
-	    alert("Input cannot be empty");
-	    return;
-	}
-	var xhttp = new XMLHttpRequest();
-	xhttp.onreadystatechange = function(){
-	if (this.readyState == 4 &&
-	    this.status == 200){
-	    console.log("received data="+xhttp.responseText);
-	    document.getElementById("response").innerText=
-	    	"Response from server:" + xhttp.responseText;
-	    }
-	}
-	xhttp.open("GET", "echo.php?data="+input, true);
-	xhttp.send();
-	document.getElementById("data").value="";
 }
 </script>
 <div id="main">
@@ -126,32 +61,11 @@ function getEcho() {
 <div id="email" onclick="showhideEmail()">Show my email</div>
 <script src="email.js"></script>
 <hr>
-<b>Interaction with forms</b>
-<div>
-	<i>Form with an HTTP POST Request</i>
-	<form action="/echo.php" method="POST" name="echo_post">
-	your input: <input name="data">
-	<input type="submit" value="Submit">
-	</form>
-	<i>Form with an HTTP GET Request<i>
-	<form action="/echo.php" method="GET">
-	your input: <input name="data">
-	<input type="submit" value="Submit">
-<hr>
-<b>Experiments with JavaScript code</b><br>
-<i>Inlined JavaScript</i>
-<div id="date" onclick="document.getElementById('date').innerHTML=Date()">Click here to show Date()</div>
-<div>
-	<i>Ajax Requests</i><br>
-	Your input:
-	<input name="data"
-		onkeypress-"console.log('You have pressed a key')" id="data">
-	<input class="button round" type="button" value="Ajax Echo" onclick="getEcho()">
-	<input class="button round" type="button" value="jQuery Ajax GET Echo" onclick="jQueryAjax()">
-	<input class="button round" type="button" value="jQuery Ajax POST Echo" onclick="jQueryAjaxPost()">
-	<input class="button round" type="button" value="guess Age" onclick="guessAge($('#data').val())">
-	<div id="response"></div>
-</div>
+<h3>Course Projects</h3>
+<ul>
+  <li><strong>Lab 1 - Foundations of the Web:</strong> Understanding how to use the Wireshark tool and the HTTP protocol. We then built a simple CGI Web App and created a PHP application that takes in user input.</li>
+  <li><strong>Lab 2 - Front-end Web Development:</strong> Learning how to create an HTML page with embedded JavaScript code, integrating external APIs, and dynamically updating the page content.</li>
+</ul>
 </div>
 </div>
 </body>
