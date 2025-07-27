@@ -48,6 +48,11 @@
       opacity: 1;
       transform: translateY(0);
     }
+    .disclaimer {
+      font-size: small;
+      color: #bbb;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -109,10 +114,13 @@
         </a>
       </div>
     </div>
+
+    <p class="disclaimer">
+      Disclaimer: The contents below are generated using public/third-party APIs. I am not responsible for the accuracy or appropriateness of the generated content.
+    </p>
   </div>
 
   <script>
-    // Animate on scroll
     const scrollElems = document.querySelectorAll('.scroll-animate');
     window.addEventListener('scroll', () => {
       scrollElems.forEach(el => {
@@ -123,7 +131,6 @@
       });
     });
 
-    // Visit tracking with timestamp
     const visitMsg = document.getElementById('visitMessage');
     const lastVisit = localStorage.getItem('lastVisit');
     const now = new Date();
