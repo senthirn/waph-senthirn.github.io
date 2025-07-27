@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <title>WAPH-Rohin Senthil</title>
 <link rel="stylesheet" href="https://waph-phung.github.io/style1.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
 <style>
 	.button {
 		background-color: #4CAF50;
@@ -40,8 +42,7 @@
       <canvas id="analog-clock" width="150" height="150" style="background-color:#999"></canvas>
       <script src="https://waph-phung.github.io/clock.js"></script>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>    
+    <script>
       function displayTime() {
         document.getElementById('digit-clock').innerHTML = "Current time: " + new Date();
       }
@@ -68,6 +69,15 @@
           e.innerHTML = "Show my email";
         }
       }
+
+      $(document).ready(function(){
+        const today = moment().format('dddd, MMMM Do YYYY');
+        $("#moment-date").text("Today is: " + today);
+        $("#moment-date").hide();
+        $("#toggle-date").click(function(){
+          $("#moment-date").toggle();
+        });
+      });
     </script>
     <div id="main">
       <p>A simple HTML page</p>
@@ -77,6 +87,11 @@
       <h3>Course Projects</h3>
       <p><strong>Lab 1:</strong> Foundations of the web. Understanding how to use Wireshark tool and HTTP protocol. We then built a simple CGI Web App and created a PHP application that takes in user input.</p>
       <p><strong>Lab 2:</strong> Front-end Web Development. Understanding how to create an HTML page with embedded JavaScript code using external APIs and how to make the page dynamic.</p>
+
+      <hr>
+      <h3>Today's Date</h3>
+      <button class="button round" id="toggle-date">Toggle Today’s Date</button>
+      <div id="moment-date" style="margin-top: 5px;"></div>
     </div>
   </div>
 </div>
